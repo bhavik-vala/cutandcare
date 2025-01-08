@@ -60,22 +60,59 @@
         })
     });
 
+    // Scroll Animation for Stats Boxes
+document.addEventListener("DOMContentLoaded", () => {
+    const statsBoxes = document.querySelectorAll(".stats-box");
+    const revealOnScroll = () => {
+        statsBoxes.forEach((box) => {
+            const boxTop = box.getBoundingClientRect().top;
+            const windowHeight = window.innerHeight;
+            if (boxTop < windowHeight - 50) {
+                box.classList.add("active");
+            }
+        });
+    };
+
+    window.addEventListener("scroll", revealOnScroll);
+    revealOnScroll();
+});
+
+
 
     // Testimonials carousel
-    $(".testimonials-carousel").owlCarousel({
-        autoplay: true,
-        animateIn: 'slideInDown',
-        animateOut: 'slideOutDown',
-        items: 1,
-        smartSpeed: 450,
-        dots: false,
-        loop: true,
-        nav : true,
-        navText : [
-            '<i class="fa fa-angle-left" aria-hidden="true"></i>',
-            '<i class="fa fa-angle-right" aria-hidden="true"></i>'
-        ]
+
+    
+    $(document).ready(function() {
+        $(".testimonials-carousel").owlCarousel({
+            items: 1,              // Show one testimonial at a time
+            loop: true,            // Enable infinite looping
+            margin: 10,            // Adjust spacing if needed
+            nav: true,             // Show navigation arrows
+            navText: ["<", ">"],   // Customize navigation arrow text/icons
+            dots: true,            // Show dots for pagination
+            autoplay: false,       // Disable autoplay
+            autoplayTimeout: 5000, // Set timeout for autoplay (if enabled)
+            smartSpeed: 600        // Smooth transition speed
+        });
     });
+
+
+
+
+    // $(".testimonials-carousel").owlCarousel({
+    //     autoplay: true,
+    //     animateIn: 'slideInDown',
+    //     animateOut: 'slideOutDown',
+    //     items: 1,
+    //     smartSpeed: 450,
+    //     dots: false,
+    //     loop: true,
+    //     nav : true,
+    //     navText : [
+    //         '<i class="fa fa-angle-left" aria-hidden="true"></i>',
+    //         '<i class="fa fa-angle-right" aria-hidden="true"></i>'
+    //     ]
+    // });
     
     
     // Blogs carousel
